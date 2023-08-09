@@ -30,7 +30,13 @@ enum custom_keycodes {
   RAISE,
   ADJUST,
   SCLNST,
-  MAXIM,
+  W_MAXIM,
+  W_1_2_L,
+  W_1_2_R,
+  W_1_3_L,
+  W_1_3_R,
+  W_2_3_L,
+  W_2_3_R,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -52,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_RALT, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX,   MAXIM,  SCLNST, XXXXXXX,                       KC_GRV, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
+      KC_LCTL, W_2_3_L, W_1_3_R, W_MAXIM,  SCLNST, XXXXXXX,                       KC_GRV, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_TILD, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
+      KC_LSFT, W_1_3_L, W_2_3_R, W_1_2_L, W_1_2_R, XXXXXXX,                      KC_TILD, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS, _______, KC_TRNS,    KC_TRNS, _______, KC_TRNS
                                       //`--------------------------'  `--------------------------'
@@ -74,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     XXXXXXX,   RESET,   DF(0),  DF(1), XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+     XXXXXXX, RESET,DF(_QWERTY),DF(_LOWER),DF(_RAISE),XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-------|--------+--------+--------+--------+--------+-                    |--------+--------+--------+--------+--------+--------|
      XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,                       XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS, XXXXXXX,
   //|-------|--------+--------+--------+--------+--------+-                    |--------+--------+--------+--------+--------+--------|
@@ -155,7 +161,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
          unregister_code(KC_LSFT);
          unregister_code(KC_4);
       }
-    case MAXIM:
+    case W_MAXIM:
       if (record->event.pressed) {
           register_code(KC_RALT);
           register_code(KC_LCTL);
@@ -165,6 +171,72 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
          unregister_code(KC_RALT);
          unregister_code(KC_LCTL);
          unregister_code(KC_ENT);
+      }
+    case W_1_2_L:
+      if (record->event.pressed) {
+          register_code(KC_RALT);
+          register_code(KC_LCTL);
+          register_code(KC_LEFT);
+      }
+      else{
+         unregister_code(KC_RALT);
+         unregister_code(KC_LCTL);
+         unregister_code(KC_LEFT);
+      }
+    case W_1_2_R:
+      if (record->event.pressed) {
+          register_code(KC_RALT);
+          register_code(KC_LCTL);
+          register_code(KC_RIGHT);
+      }
+      else{
+         unregister_code(KC_RALT);
+         unregister_code(KC_LCTL);
+         unregister_code(KC_RIGHT);
+      }
+    case W_1_3_L:
+      if (record->event.pressed) {
+          register_code(KC_RALT);
+          register_code(KC_LCTL);
+          register_code(KC_D);
+      }
+      else{
+         unregister_code(KC_RALT);
+         unregister_code(KC_LCTL);
+         unregister_code(KC_D);
+      }
+    case W_1_3_R:
+      if (record->event.pressed) {
+          register_code(KC_RALT);
+          register_code(KC_LCTL);
+          register_code(KC_G);
+      }
+      else{
+         unregister_code(KC_RALT);
+         unregister_code(KC_LCTL);
+         unregister_code(KC_G);
+      }
+    case W_2_3_L:
+      if (record->event.pressed) {
+          register_code(KC_RALT);
+          register_code(KC_LCTL);
+          register_code(KC_E);
+      }
+      else{
+         unregister_code(KC_RALT);
+         unregister_code(KC_LCTL);
+         unregister_code(KC_E);
+      }
+    case W_2_3_R:
+      if (record->event.pressed) {
+          register_code(KC_RALT);
+          register_code(KC_LCTL);
+          register_code(KC_T);
+      }
+      else{
+         unregister_code(KC_RALT);
+         unregister_code(KC_LCTL);
+         unregister_code(KC_T);
       }
     default:
       if (record->event.pressed) {
