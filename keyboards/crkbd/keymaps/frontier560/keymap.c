@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _QWERTY 0
 #define _LOWER 1
 #define _RAISE 2
-#define _ADJUST 16
+#define _ADJUST 15
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -80,11 +80,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     XXXXXXX, RESET,DF(_QWERTY),DF(_LOWER),DF(_RAISE),XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+     XXXXXXX, XXXXXXX,DF(_QWERTY),DF(_LOWER),DF(_RAISE),XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-------|--------+--------+--------+--------+--------+-                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,                       XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS, XXXXXXX,
+     XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,                       XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCT, KC_PAUS, XXXXXXX,
   //|-------|--------+--------+--------+--------+--------+-                    |--------+--------+--------+--------+--------+--------|
-     KC_LSFT, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,                       XXXXXXX, XXXXXXX,  KC_INS, KC_KANA,  KC_APP, XXXXXXX,
+     KC_LSFT, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,                       XXXXXXX, XXXXXXX,  KC_INS, XXXXXXX,  KC_APP, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS, _______, KC_TRNS,    KC_TRNS, _______, KC_TRNS
                                       //`--------------------------'  `--------------------------'
@@ -110,10 +110,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
 
         if (lower_pressed && (TIMER_DIFF_16(record->event.time, lower_pressed_time) < TAPPING_TERM)) {
-          register_code(KC_LANG2); // for macOS
-          register_code(KC_MHEN);
-          unregister_code(KC_MHEN);
-          unregister_code(KC_LANG2);
+          register_code(KC_LNG2); // for macOS
+          //register_code(KC_MHEN);
+          //unregister_code(KC_MHEN);
+          unregister_code(KC_LNG2);
         }
         lower_pressed = false;
       }
@@ -131,10 +131,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
 
         if (raise_pressed && (TIMER_DIFF_16(record->event.time, raise_pressed_time) < TAPPING_TERM)) {
-          register_code(KC_LANG1); // for macOS
-          register_code(KC_HENK);
-          unregister_code(KC_HENK);
-          unregister_code(KC_LANG1);
+          register_code(KC_LNG1); // for macOS
+          //register_code(KC_HENK);
+          //unregister_code(KC_HENK);
+          unregister_code(KC_LNG1);
         }
         raise_pressed = false;
       }
