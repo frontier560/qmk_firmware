@@ -82,12 +82,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      XXXXXXX, XXXXXXX,DF(_QWERTY),DF(_LOWER),DF(_RAISE),XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-------|--------+--------+--------+--------+--------+-                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,                       XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCT, KC_PAUS, XXXXXXX,
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCT, KC_PAUS, XXXXXXX,
   //|-------|--------+--------+--------+--------+--------+-                    |--------+--------+--------+--------+--------+--------|
-     KC_LSFT, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,                       XXXXXXX, XXXXXXX,  KC_INS, XXXXXXX,  KC_APP, XXXXXXX,
+     KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX,  KC_INS, XXXXXXX,  KC_APP, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS, _______, KC_TRNS,    KC_TRNS, _______, KC_TRNS
                                       //`--------------------------'  `--------------------------'
+  
   )
 };
 
